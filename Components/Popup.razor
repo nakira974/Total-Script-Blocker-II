@@ -1,0 +1,96 @@
+
+<head>
+    <title>Extension Action</title>
+    <link type="text/css" href="css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+   
+
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script src="CHANGE__PASSWORD__HERE.js"></script>
+    <script src="common/common.js"></script>
+
+
+</head>
+
+<header>
+
+    <div class="hborder">
+        <table>
+            <tr>
+                <td> <img src="img/icon48.png" width="24" height="24" style="padding: 0px 0px 0px 0px"></td>
+                <td><label id="labelHeaderTitle"
+                           style="font-size:21px; font-weight: bold; padding: 0px 0px 0px 0px; margin: 0px 2px 0px 2px">Total
+                    Script Blocker</label></td>
+                <td><img src="img/icon48.png" width="24" height="24" style="padding: 0px 0px 0px 0px"></td>
+            </tr>
+        </table>
+    </div>
+
+</header>
+
+<body>
+<button id="passwordBad" name="actionButton" class="actionButton">
+    <span style="font-size:36px; color:red;">( ! )</span><br /><br /><span name="pwdProbDescrip">No password set for
+        Total Script Blocker.</span><br />Will
+    default deny scripts until changed.<br /><br />Click for instructions.
+</button>
+
+<button id="fatalError" name="actionButton" class="actionButton">
+    <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered invalid
+    encryption for this
+    site's settings / Exceeded storage quota on<br /><br /><span id="fatalErrorUrl"
+                                                                 style="font-style:italic;"></span><br />Click here to
+    reset the<br />HTML5 storage<br />of the current web page.<br /><br />Otherwise, please clear/enable the browser
+    HTML5
+    storage.
+</button>
+
+<button id="extFatalError" name="actionButton" class="actionButton">
+    <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered corrupted
+    settings data in
+    Google Chrome / Exceeded extension storage quota in Google Chrome.<br /><br />Click here to clear<br />the Total
+    Script Blocker
+    settings lists<br />to try to solve the problem.<br /><br />Otherwise, please ensure Google Chrome has
+    javascript and
+    HTML5 storage enabled.<br /><br />Contact the author of Total Script Blocker if you repeatedly get this message.
+</button>
+
+<button id="revokeAllTemp" name="actionButton" class="actionButton">Enable Protection</button>
+
+
+<div id="divMultiSelect">
+    <input id="cbMultiSelect" name="cbMultiSelect" type="hidden" />
+    <!--  <input type="checkbox" id="cbMultiSelect" name="cbMultiSelect" type="hidden"/>  
+    <label for="cbMultiSelect"> Multi-Select Sites</label> -->
+</div>
+
+<div id="wrapperSpacerTop" class="wrapperSpacer">
+    <hr />
+</div>
+<div id="wrapperSpacerBottom" class="wrapperSpacer">
+    <hr />
+</div>
+
+<button id="tempAllowAllShown" name="actionButton" class="actionButton">Temporarily allow all this page</button>
+<button id="allowAllShown" name="actionButton" class="actionButton">Allow All Listed Sites</button>
+<button id="blockAllShown" name="actionButton" class="actionButton">Block All Listed Sites</button>
+<button id="globalAllowTemp" name="actionButton" class="actionButton">Disable Protection</button>
+
+<div id="bottomLinks">
+    <a href="javascript:;" id="pop_donate">Donate</a> | <a href="javascript:;" id="pop_options">Options</a> | <a
+                                                                                                                  href="javascript:;" id="pop_close">Close</a>
+</div>
+
+
+<div id="spaceFiller" style="display:none; height:150px"></div>
+
+<script src="popup.js"></script>
+
+</body>
+
+
+@code {
+    
+
+}

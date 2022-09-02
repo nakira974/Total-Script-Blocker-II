@@ -1,3 +1,4 @@
+
 function showOptionsPage() {
     chrome.windows.getAll({populate: true}, function (windowsArray) {
         var optionsPageURL = chrome.extension.getURL("options.html");

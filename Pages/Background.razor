@@ -1,6 +1,7 @@
 ﻿@page "/background.html"
 @inherits BackgroundPage
 @using WebExtensions.Net.Tabs
+@using WebExtensions.Net.Windows
 
 @code {
     protected override async Task OnInitializedAsync()
@@ -13,4 +14,5 @@
             Url = extensionUrl
         });
     }
+    
 }

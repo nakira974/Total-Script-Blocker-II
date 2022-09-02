@@ -15,4 +15,10 @@
     <None Include="wwwroot\**\*" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ScriptBlock.Kernel">
+      <HintPath>..\ScriptBlock.Kernel\ScriptBlock.Kernel\bin\Debug\net6.0\ScriptBlock.Kernel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

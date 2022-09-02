@@ -2,12 +2,21 @@
 @inherits Blazor.BrowserExtension.Pages.BackgroundPage
 @using WebExtensions.Net.Tabs
 
+<head>
+    <script src="CHANGE__PASSWORD__HERE.js"></script>
+    <script src="common/cryptoJS-md5-min.js"></script>
+    <script src="common/common.js"></script>
+    <script src="common/config.js"></script>
+    <script src="background.js"></script>
+    <script src="bg.js"></script>
+</head>
+
 @code {
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-    // this opens index.html in the extension as a new tab when the background page is loaded
-        var extensionUrl = await WebExtensions.Runtime.GetURL("index.html");
+    // this opens options.html in the extension as a new tab when the background page is loaded
+        var extensionUrl = await WebExtensions.Runtime.GetURL("options.html");
         await WebExtensions.Tabs.Create(new CreateProperties() 
                                         {Url = extensionUrl, Title = "Total Script Blocker II"});
         

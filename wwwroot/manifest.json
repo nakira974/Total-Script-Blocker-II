@@ -37,5 +37,9 @@
   "web_accessible_resources": [
     "framework/*",
     "content/*"
-  ]
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
 }

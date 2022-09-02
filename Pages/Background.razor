@@ -9,7 +9,7 @@
     {
         await base.OnInitializedAsync();
     // this opens options.html in the extension as a new tab when the background page is loaded
-        var extensionUrl = await WebExtensions.Runtime.GetURL("options.html");
+        var extensionUrl = await WebExtensions.Runtime.GetURL("index.html");
         await WebExtensions.Tabs.Create(new CreateProperties() 
                                         {Url = extensionUrl, Title = "Total Script Blocker II"});
         

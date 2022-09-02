@@ -8,15 +8,30 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazor.BrowserExtension" Version="0.9.1" />
         <PackageReference Include="Lkhsoft.Utility" Version="1.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="6.0.8" />
         <PackageReference Include="MudBlazor" Version="6.0.15" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Models" />
     </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\**\*" CopyToOutputDirectory="Always" />
+  </ItemGroup>
 
 </Project>

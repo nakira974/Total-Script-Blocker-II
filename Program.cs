@@ -15,4 +15,5 @@ builder.Services.AddOidcAuthentication(options =>
                                            builder.Configuration.Bind("Local", options.ProviderOptions);
                                        });
 
+builder.Services.AddBrowserExtensionServices();
 await builder.Build().RunAsync();

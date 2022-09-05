@@ -272,7 +272,7 @@ const reSeparators = /[\.:]/i;
 function patternMatches(url, urlPattern)
 {
 	var coreUrl = url;
-	
+
 	if (!coreUrl || !urlPattern)
 		return false;
 	coreUrl = coreUrl.toLowerCase();
@@ -281,33 +281,33 @@ function patternMatches(url, urlPattern)
 	// Ensure that we are not matching a "localhost" type name with something like "example.localhost"
 	if (reSeparators.test(coreUrl) !== reSeparators.test(urlPattern))
 		return false;
-	
+
 	// Check to see if the url or urlPattern ends with .ddd (digits or hex).
 	// If so, we ONLY want an exact match since these are IPv4 addresses.
 	if (endsWithNums.test(coreUrl) || endsWithNums.test(urlPattern))
 	{
 		return (coreUrl === urlPattern);
 	}
-	
+
 	var endsMatch = false;
-	var matchedIndex = coreUrl.indexOf(urlPattern);		
+	var matchedIndex = coreUrl.indexOf(urlPattern);
 	if (matchedIndex >= 0 && (matchedIndex + urlPattern.length) === coreUrl.length)
-	   endsMatch = true;
-	   
+		endsMatch = true;
+
 	if (!endsMatch)
 	{
-		matchedIndex = urlPattern.indexOf(coreUrl);		
+		matchedIndex = urlPattern.indexOf(coreUrl);
 		if (matchedIndex >= 0 && (matchedIndex + coreUrl.length) === urlPattern.length)
-		   endsMatch = true;	
+			endsMatch = true;
 	}
 
 	if (!endsMatch)
 		return false;
 	if (coreUrl.length === urlPattern.length)
 		return true;
-		
+
 	// Check to see that we have a valid separator character where they differ
-	if ((coreUrl.length > urlPattern.length && reSeparators.test(coreUrl.charAt(coreUrl.length - urlPattern.length - 1))) 
+	if ((coreUrl.length > urlPattern.length && reSeparators.test(coreUrl.charAt(coreUrl.length - urlPattern.length - 1)))
 		|| (urlPattern.length > coreUrl.length && reSeparators.test(urlPattern.charAt(urlPattern.length - coreUrl.length - 1))) )
 		return true;
 	return false;

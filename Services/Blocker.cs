@@ -20,18 +20,19 @@ public class Blocker : IBlocker
 {
     private readonly IJsonSerializer                _jsonSerializer;
     private readonly ILogger<Blocker>               _logger;
-    private readonly IJSRuntime                      _jsRuntime;
+    private readonly IJSRuntime                     _jsRuntime;
     private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
     public Blocker(IJsonSerializer jsonSerializer, ILogger<Blocker> logger, IJSRuntime jsRuntime)
     {
         _jsonSerializer = jsonSerializer;
         _logger         = logger;
-        _jsRuntime = jsRuntime;
-        _moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-                                                                         "import",
-                                                                         "common.js")
-                                        .AsTask());    }
+        _jsRuntime      = jsRuntime;
+        _moduleTask = new Lazy<Task<IJSObjectReference>>(() => _jsRuntime.InvokeAsync<IJSObjectReference>(
+                                                                           "import",
+                                                                           "common.js")
+                                                                         .AsTask());
+    }
 
     /// <inheritdoc />
     public async Task<bool> SortUrlList(IEnumerable<string> urls)
@@ -85,7 +86,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
     }
 
     /// <inheritdoc />
@@ -112,10 +112,9 @@ public class Blocker : IBlocker
     {
         try
         {
-            return (
-                       url.Length < 4 
-                 || IBlocker.ReInvalidCharsIPv4.Match(url).Success
-                 || IBlocker.ReKnownTLDs.Match(url).Success );
+            return url.Length < 4
+                || IBlocker.ReInvalidCharsIPv4.Match(url).Success
+                || IBlocker.ReKnownTLDs.Match(url).Success;
         }
         catch (Exception e)
         {
@@ -133,9 +132,9 @@ public class Blocker : IBlocker
         {
             var coreUrl = urlToCompare;
 
-            if (string.IsNullOrEmpty(coreUrl) || string.IsNullOrEmpty(patternUrl)) 
+            if (string.IsNullOrEmpty(coreUrl) || string.IsNullOrEmpty(patternUrl))
                 return false;
-            
+
             coreUrl    = coreUrl.ToLower();
             patternUrl = patternUrl.ToLower();
 
@@ -146,9 +145,7 @@ public class Blocker : IBlocker
             // Check to see if the url or urlPattern ends with .ddd (digits or hex).
             // If so, we ONLY want an exact match since these are IPv4 addresses.
             if (IBlocker.EndWithNums.Match(coreUrl).Success || IBlocker.EndWithNums.Match(patternUrl).Success)
-            {
                 return coreUrl.Equals(patternUrl);
-            }
 
             var endsMatch    = false;
             var matchedIndex = coreUrl.IndexOf(patternUrl, StringComparison.Ordinal);
@@ -168,10 +165,12 @@ public class Blocker : IBlocker
                 return true;
 
             // Check to see that we have a valid separator character where they differ
-            return (coreUrl.Length > patternUrl.Length 
-                 && IBlocker.ReSeparators.Match(coreUrl.ElementAt(coreUrl.Length - patternUrl.Length - 1).ToString()).Success)
-                || (patternUrl.Length > coreUrl.Length 
-                 && IBlocker.ReSeparators.Match(patternUrl.ElementAt(patternUrl.Length - coreUrl.Length - 1).ToString()).Success);
+            return (coreUrl.Length > patternUrl.Length
+                 && IBlocker.ReSeparators.Match(coreUrl.ElementAt(coreUrl.Length - patternUrl.Length - 1).ToString())
+                            .Success)
+                || (patternUrl.Length > coreUrl.Length
+                 && IBlocker.ReSeparators.Match(patternUrl.ElementAt(patternUrl.Length - coreUrl.Length - 1).ToString())
+                            .Success);
         }
         catch (Exception e)
         {
@@ -180,7 +179,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             return false;
         }
-
     }
 
     /// <inheritdoc />
@@ -188,7 +186,7 @@ public class Blocker : IBlocker
     {
         try
         {
-            return (await FindUrlPatternIndex(list, urlToFind) >= 0);
+            return await FindUrlPatternIndex(list, urlToFind) >= 0;
         }
         catch (Exception e)
         {
@@ -197,7 +195,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             return false;
         }
-
     }
 
     /// <inheritdoc />
@@ -207,22 +204,22 @@ public class Blocker : IBlocker
         {
             if (string.IsNullOrEmpty(patternUrl) || list is null)
                 return -1;
-		
-            var splitFindVals      = patternUrl.Split('.');	
+
+            var splitFindVals      = patternUrl.Split('.');
             var bestInsertionIndex = -1;
-            if (splitFindVals.Length> 1)
+            if (splitFindVals.Length > 1)
             {
                 // See if there is an exact match
                 var enumerable = list as string[] ?? list.ToArray();
                 var foundIndex = await UrlBSearch(enumerable, patternUrl, CompareWSeparators);
                 bestInsertionIndex = foundIndex;
-		
+
                 if (foundIndex >= 0)
                     return foundIndex;
 
                 // Otherwise, see if the end segments match
                 foundIndex = await UrlBSearch(enumerable, patternUrl, CompareWSeparatorsLoose);
-		
+
                 if (foundIndex >= 0)
                     return foundIndex;
             }
@@ -231,14 +228,14 @@ public class Blocker : IBlocker
                 // Exact match for "localhost" type domains with no separators (ie: TLDs)
                 var foundIndex = await UrlBSearch(list, patternUrl, CompareNoSeparators);
                 bestInsertionIndex = foundIndex;
-		
+
                 if (foundIndex >= 0)
                     return foundIndex;
             }
 
             // Return value of -1 means that we couldn't even find a best insertion index
             // Otherwise, abs(return value + 2) gives the best insertion index to maintain sorted order
-            return (bestInsertionIndex < 0) ? bestInsertionIndex - 1 : -1;
+            return bestInsertionIndex < 0 ? bestInsertionIndex - 1 : -1;
         }
         catch (Exception e)
         {
@@ -248,7 +245,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
     }
 
     public async Task<int> UrlBSearch(IEnumerable<string> list, string key, Func<string, string, string> comapre)
@@ -264,8 +260,9 @@ public class Blocker : IBlocker
             var left       = 0;
             var enumerable = list as string[] ?? list.ToArray();
             var right      = enumerable.ToArray().Length - 1;
-            while (left <= right) {
-                var mid = left + ((right - left) / 2);
+            while (left <= right)
+            {
+                var mid = left + (right - left) / 2;
                 var cmp = await compare(key, enumerable.ToArray()[mid]);
                 if (cmp < 0)
                     right = mid - 1;
@@ -274,6 +271,7 @@ public class Blocker : IBlocker
                 else
                     return mid;
             }
+
             return -(left + 1);
         }
         catch (Exception e)
@@ -337,7 +335,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
     }
 
     /// <inheritdoc />
@@ -355,7 +352,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
     }
 
     /// <inheritdoc />
@@ -373,7 +369,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
     }
 
     /// <inheritdoc />
@@ -392,7 +387,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
     }
 
     /// <inheritdoc />
@@ -419,7 +413,6 @@ public class Blocker : IBlocker
         {
             var module = await _moduleTask.Value;
             return await module.InvokeAsync<BrowserElementType>("getElType", element);
-            
         }
         catch (Exception e)
         {

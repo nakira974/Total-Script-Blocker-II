@@ -1,9 +1,17 @@
 ﻿using System;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Blazored.SessionStorage;
+using Lkhsoft.Utility;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
+using Serilog.Extensions.Logging;
 
 namespace Total_Script_Blocker_II
 {
@@ -17,6 +25,24 @@ namespace Total_Script_Blocker_II
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+            /* Serilog configuration
+ * here I use BrowserHttp sink to send log entries to my Server app
+ */
+            var levelSwitch = new LoggingLevelSwitch();
+            Log.Logger = new LoggerConfiguration()
+                        .MinimumLevel.ControlledBy(levelSwitch)
+                        .Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"))
+                        .WriteTo.BrowserConsole(
+                                                LogEventLevel.Information,
+                                                "[{Timestamp:HH:mm:ss} {Level:u2}] {Message:lj}{NewLine}{Exception}", 
+                                                CultureInfo.CurrentUICulture)
+                        .CreateLogger();
+
+/* this is used instead of .UseSerilog to add Serilog to providers */
+            builder.Logging.AddSerilog();
+            
+            builder.Services.AddScoped<IJsonSerializer, JsonSerializer>();
+            builder.Services.AddBlazoredSessionStorage();
             builder.Services.AddBrowserExtensionServices();
             await builder.Build().RunAsync();
         }

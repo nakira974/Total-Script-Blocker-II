@@ -9,9 +9,10 @@ namespace Total_Script_Blocker_II.Services;
 public interface IBlocker
 {
     /// <summary>
-    /// 
+    /// In place sort of urls. Returns true if successful, false if there was an error.
+    /// If false, you must reload the data in theArray since it is passed by reference.
     /// </summary>
-    /// <param name="urls"></param>
+    /// <param name="urls">Valid urls to sort</param>
     /// <returns></returns>
     public Task<bool> SortUrlList(IEnumerable<string> urls);
 

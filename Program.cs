@@ -12,6 +12,7 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Extensions.Logging;
+using Total_Script_Blocker_II.Services;
 
 namespace Total_Script_Blocker_II
 {
@@ -42,6 +43,7 @@ namespace Total_Script_Blocker_II
             builder.Logging.AddSerilog();
             
             builder.Services.AddScoped<IJsonSerializer, JsonSerializer>();
+            builder.Services.AddScoped<IBlocker, Blocker>();
             builder.Services.AddBlazoredSessionStorage();
             builder.Services.AddBrowserExtensionServices();
             await builder.Build().RunAsync();

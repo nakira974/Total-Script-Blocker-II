@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Total_Script_Blocker_II.Models;
 
-public class Setting
+public class Settings
 {
     public enum SettingType
     {

@@ -4,8 +4,11 @@
 @using WebExtensions.Net.Windows
 @using Blazored.SessionStorage
 @using System.Text.Json.Serialization
-@inject ISessionStorageService _sessionStorageService
+@using Lkhsoft.Utility
+@using Total_Script_Blocker_II.Models
 
+@inject ISessionStorageService _sessionStorageService
+@inject IJsonSerializer _jsonSerializer
 
 @code{
     protected override async Task OnInitializedAsync()
@@ -62,7 +65,9 @@
     private async Task<string> GenerateAllSettings()
     {
         var tempAllowListHash = _sessionStorageService.GetItemAsStringAsync("tempAllowListHash");
-        
+        var setting = new Settings();
+        //TODO Create settings here
+        return await _jsonSerializer.SerializeAsync(setting);
     }
     
 }

@@ -5,21 +5,46 @@
 @using Blazored.SessionStorage
 @using System.Text.Json.Serialization
 @using Lkhsoft.Utility
+@using Microsoft.Extensions.Logging
 @using Total_Script_Blocker_II.Models
 
 @inject ISessionStorageService _sessionStorageService
 @inject IJsonSerializer _jsonSerializer
+@inject IJSRuntime _jsRuntime
+@inject ILogger<Background> _logger
 
 @code{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            
+        }
+        catch (Exception e)
+        {
+            _logger.LogError($"Background.razor OnAfterRenderAsync(bool firstRender) error {e.Message}\nStacktrace : {e.StackTrace}");
+            throw;
+        }
+    }
+
     protected override async Task OnInitializedAsync()
     {
-        await base.OnInitializedAsync();
-        // this opens index.html in the extension as a new tab when the background page is loaded
-        var extensionUrl = await WebExtensions.Runtime.GetURL("index.html");
-        await WebExtensions.Tabs.Create(new CreateProperties
+        try
         {
-            Url = extensionUrl
-        });
+            await base.OnInitializedAsync();
+    // this opens index.html in the extension as a new tab when the background page is loaded
+            var extensionUrl = await WebExtensions.Runtime.GetURL("index.html");
+            await WebExtensions.Tabs.Create(new CreateProperties
+                                            {
+                                                Url = extensionUrl
+                                            });
+        }
+        catch (Exception e)
+        {
+            _logger.LogError($"Background.razor OnInitializedAsync() error {e.Message}\nStacktrace : {e.StackTrace}");
+            throw;
+        }
+       
     }
     /// <summary>
     /// Open options.html and close other instance
@@ -52,7 +77,7 @@
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError($"Background.razor ShowOptionsPage() error {e.Message}\nStacktrace : {e.StackTrace}");
             throw;
         }
     }
@@ -64,10 +89,19 @@
 
     private async Task<string> GenerateAllSettings()
     {
-        var tempAllowListHash = _sessionStorageService.GetItemAsStringAsync("tempAllowListHash");
-        var setting = new Settings();
-        //TODO Create settings here
-        return await _jsonSerializer.SerializeAsync(setting);
+        try
+        {
+            var tempAllowListHash = _sessionStorageService.GetItemAsStringAsync("tempAllowListHash");
+            var setting = new Settings(); 
+    //TODO Create settings here
+            return await _jsonSerializer.SerializeAsync(setting);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError($"Background.razor GenerateAllSettings() error {e.Message}\nStacktrace : {e.StackTrace}");
+            throw;
+        }
+        
     }
     
 }

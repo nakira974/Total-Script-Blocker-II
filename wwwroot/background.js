@@ -53,6 +53,8 @@ function generateAllSettings() {
 /*
  Listens for messages from our content scripts to provide settings information.
  */
+
+
 chrome.extension.onMessage.addListener(function (msg, src, send) {
     if (msg.type === "get settings block start") {
         //console.log("get settings block start msg: " + msg.url);

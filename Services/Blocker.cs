@@ -13,8 +13,6 @@ using Total_Script_Blocker_II.Models;
 
 // ReSharper disable TemplateIsNotCompileTimeConstantProblem
 
-//TODO Terminate to translate the more js possible into c# code or call JSIterrop if necessary
-
 namespace Total_Script_Blocker_II.Services;
 
 /// <inheritdoc />

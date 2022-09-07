@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
             window.close();
         });
     });
+    /*
     $(function () {
         $("#fatalError").click(function () {
             openTab(chrome.extension.getURL('options.html'));
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             updateCurrentOnUnload = false;
             reloadCurrentAndClose();
         });
-    });
+    });*/
 
 
     $("#pop_options").click(function () {

@@ -6,17 +6,16 @@
 @inject ILocalStorageService _localStorageService
 @inject ILogger<ClearSettingsComponent> _logger
 
-<MudButton OnClick="async () => await ClearItems()"></MudButton>
-    <button id="extFatalError" name="actionButton" class="actionButton">
-            <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered corrupted
-            settings data in
-            Google Chrome / Exceeded extension storage quota in Google Chrome.<br /><br />Click here to clear<br />the
-            Total Script Blocker
-            settings lists<br />to try to solve the problem.<br /><br />Otherwise, please ensure Google Chrome has
-            javascript and
-            HTML5 storage enabled.<br /><br />Contact the author of Total Script Blocker if you repeatedly get this
-            message.
-        </button>
+<MudButton OnClick="async () => await ClearItems()" id="extFatalError" Class="actionButton">
+    <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered corrupted
+                settings data in
+                Google Chrome / Exceeded extension storage quota in Google Chrome.<br /><br />Click here to clear<br />the
+                Total Script Blocker
+                settings lists<br />to try to solve the problem.<br /><br />Otherwise, please ensure Google Chrome has
+                javascript and
+                HTML5 storage enabled.<br /><br />Contact the author of Total Script Blocker if you repeatedly get this
+                message.
+</MudButton>
 
 @code {
     [Parameter]

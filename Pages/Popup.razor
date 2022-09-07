@@ -1,4 +1,5 @@
 @page "/popup.html"
+@using Total_Script_Blocker_II.Components.Options
 @inherits Blazor.BrowserExtension.Pages.BasePage
 
 <h1>Extension Action</h1>
@@ -26,25 +27,9 @@
         default deny scripts until changed.<br /><br />Click for instructions.
     </button>
 
-    <button id="fatalError" name="actionButton" class="actionButton">
-        <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered invalid
-        encryption for this
-        site's settings / Exceeded storage quota on<br /><br /><span id="fatalErrorUrl"
-            style="font-style:italic;"></span><br />Click here to
-        reset the<br />HTML5 storage<br />of the current web page.<br /><br />Otherwise, please clear/enable the browser
-        HTML5
-        storage.
-    </button>
+<FatalErrorComponent/>
 
-    <button id="extFatalError" name="actionButton" class="actionButton">
-        <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered corrupted
-        settings data in
-        Google Chrome / Exceeded extension storage quota in Google Chrome.<br /><br />Click here to clear<br />the Total
-        Script Blocker
-        settings lists<br />to try to solve the problem.<br /><br />Otherwise, please ensure Google Chrome has
-        javascript and
-        HTML5 storage enabled.<br /><br />Contact the author of Total Script Blocker if you repeatedly get this message.
-    </button>
+<ClearSettingsComponent ExtensionsApi="WebExtensions"/>
 
     <button id="revokeAllTemp" name="actionButton" class="actionButton">Enable Protection</button>
 

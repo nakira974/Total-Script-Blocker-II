@@ -1,9 +1,6 @@
 ﻿@page "/options.html"
-@using Blazored.SessionStorage
 @using Lkhsoft.Utility
 @using Total_Script_Blocker_II.Components.Options
-@inject ISessionStorageService _sessionStorageService
-@inject IJsonSerializer _jsonSerializer
 
 @inherits Blazor.BrowserExtension.Pages.IndexPage
 
@@ -13,12 +10,7 @@
     <meta name="description" content="Take control of scripting in your browser." />
     <meta name="robots" content="index, follow, noarchive" />
     <meta name="googlebot" content="noarchive" />
-
     <title>Options | Total Script Blocker II</title>
-    <link type="text/css" href="css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
-    
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
 </head>
 
 <body bgcolor="ffffff">

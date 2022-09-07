@@ -7,7 +7,6 @@ using Lkhsoft.Utility;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
-using MudBlazor;
 using ScriptBlock.Kernel;
 using Total_Script_Blocker_II.Models;
 

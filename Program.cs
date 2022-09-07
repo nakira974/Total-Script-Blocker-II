@@ -7,11 +7,9 @@ using Lkhsoft.Utility;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
-using Serilog.Extensions.Logging;
 using Total_Script_Blocker_II.Services;
 
 namespace Total_Script_Blocker_II
@@ -21,7 +19,7 @@ namespace Total_Script_Blocker_II
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("#app");
+            builder.RootComponents.Add<App>("#TotalScriptBlockerIIApp");
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });

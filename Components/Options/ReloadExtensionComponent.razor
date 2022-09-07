@@ -1,0 +1,17 @@
+
+      @*//TODO  Translate javascript to Blazor event listener
+         $(function () {
+        $("#reloadExt").click(function () {
+            chrome.extension.getBackgroundPage().reloadExt();
+            window.close();
+        });
+    });*@
+    <button id="reloadExt" name="actionButton" class="actionButton">
+            <span style="font-size:36px; color:red;">( ! )</span><br /><br />Click to reload Total Script Blocker after
+            you copy back your
+            password file.
+        </button>
+
+@code {
+    
+}

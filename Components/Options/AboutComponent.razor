@@ -1,0 +1,316 @@
+<div id="tabs-About">
+        <HistoryComponent/>
+        <BugReportComponent/>
+        <br/>
+        <ListsStatsComponent/>
+        <h2>licenses</h2>
+        <p>Total Script Blocker is open source and is released under the GNU General Public
+            License V3. This license and the license for code portions used from other projects are shown below:
+        </p>
+        <MudList Clickable="false">
+            <MudListSubheader>
+                <MudChip Color="Color.Secondary">
+                    Total Script Blocker II
+                </MudChip>
+            </MudListSubheader>
+            <MudListItem Text="Program Usage Conditions">
+                @ProgramUsageCondition
+                <a href="http://www.gnu.org/licenses/"> GNU LICENCES CONDITIONS</a>
+            </MudListItem>
+
+            <MudListItem Text="Stanford Javascript Crypto Library">
+                &nbsp; Copyright &copy; 2010 Emily Stark, Mike Hamburg and Dan Boneh.
+                All rights reserved. (
+                <a style="font-weight: bold;"href="http://crypto.stanford.edu/sjcl/">
+                    http://crypto.stanford.edu/sjcl/
+                </a>)<br/>
+                @StandfordJavascriptLicence
+            </MudListItem>
+
+            <MudListItem Text="Michael Gundlach">
+                &nbsp; Copyright &copy; 2010 Michael Gundlach (
+                <a style="font-weight: bold;"
+                   href="http://code.google.com/p/adblockforchrome/">
+                    http://code.google.com/p/adblockforchrome/
+                </a>)<br/>
+                @GunlachLicence
+            </MudListItem>
+
+            <MudListItem Text="Tom Joseph">
+                &nbsp; Copyright &copy; 2010 Tom Joseph (
+                <a href="http://code.google.com/p/adthwart/"
+                   style="font-weight: bold;">http://code.google.com/p/adthwart/</a>
+                )<br/>
+                &nbsp; <br/>
+                @JosephLicence
+            </MudListItem>
+
+            <MudListItem Text="JQuery">
+                &nbsp; Copyright &copy; 2010 John Resig,
+                <a style="font-weight: bold;"
+                   href="http://jquery.com/">http://jquery.com/</a><br/>
+                @JqueryLicence
+            </MudListItem>
+            
+            <MudListItem Text="Steven Levithan">
+                &nbsp; &copy; Steven Levithan (
+                <a style="font-weight: bold;"
+                   href="http://stevenlevithan.com">stevenlevithan.com</a>)<br/>
+                <br/>
+                @LevithanLicence
+            </MudListItem>
+            
+            <MudListItem Text="Intermapper IPv6 Parser">
+                &nbsp; &copy; Intermapper (
+                <a style="font-weight: bold;"
+                   href="http://www.intermapper.com">http://www.intermapper.com</a>)
+                <br/>
+                <br/>
+                Free use with link back to site.<br>
+                <br/>
+            </MudListItem>
+            
+            <MudListItem Text="Public Suffix List">
+                (<a href="http://publicsuffix.org/" style="font-weight: bold;">http://publicsuffix.org/</a>,
+                For recognizing common top level domains)<br/>
+                <br/>
+                @Contributors
+            </MudListItem>
+            
+            <MudListItem Text="Crypto-JS">
+                (<a href="http://code.google.com/p/crypto-js/"
+                    style="font-weight: bold;">http://code.google.com/p/crypto-js/</a>,
+                For MD5 hashing)<br/>
+                <br/>
+                
+                <div>Copyright &copy; 2009,
+                    Jeff Mott. All rights reserved.<br/>
+                    <br/>
+                    @CryptoJsLicence
+                </div>
+            </MudListItem>
+        </MudList>
+        </div>
+
+@code {
+    private static readonly string ProgramUsageCondition = "This program is free software: you can" +
+                                                            "redistribute it and/or modify\n \t it under the terms of the GNU General Public License as published by\n" +
+                                                            "\t the Free Software Foundation, either version 3 of the License, or\n \t (at your option) any later version.\n" +
+                                                            "\n \t This program is distributed in the hope that it will be useful,\n \t but WITHOUT ANY WARRANTY; without even" +
+                                                            "the implied warranty of\n \t MERCHANTABILITY or FITNESS FOR A" +
+                                                            "PARTICULAR PURPOSE.\t See the\n \t GNU General Public License for more details. \n \n" +
+                                                            "You should have received a copy of the GNU General Public License\n along with this program. If not, see\t";
+    
+    
+    private static readonly string StandfordJavascriptLicence =
+        "\n" +
+        "Redistribution and use in source and binary forms, with or without" +
+        "modification, are\n" +
+        "permitted provided that the following conditions are met:\n" +
+        "\n" +
+        "\t \t 1. Redistributions of source code must retain the" +
+        "above copyright notice, this list of\n" +
+        "\t \t \t conditions and the" +
+        "following disclaimer.\n" +
+        "\n" +
+        "\t \t 2. Redistributions in binary form must reproduce" +
+        "the above copyright notice, this list\n" +
+        "\t \t \t of conditions and" +
+        "the following disclaimer in the documentation and/or other materials\n" +
+        "\t \t \t provided with the" +
+        "distribution.\n" +
+        "\n" +
+        " THIS SOFTWARE IS PROVIDED BY Emily Stark, Mike Hamburg and Dan Boneh" +
+        "'AS IS' AND ANY EXPRESS OR IMPLIED\n" +
+        "WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF" +
+        "MERCHANTABILITY AND\n" +
+        "FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL" +
+        "<COPYRIGHT HOLDER> OR\n" +
+        "CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL," +
+        "EXEMPLARY, OR\n" +
+        "CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF" +
+        "SUBSTITUTE GOODS OR\n" +
+        "SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)" +
+        "HOWEVER CAUSED AND ON\n" +
+        " ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT" +
+        "(INCLUDING\n" +
+        "NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS" +
+        "SOFTWARE, EVEN IF\n" +
+        "ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n" +
+        "\n" +
+        "The views and conclusions contained in the software and documentation" +
+        "are those of the\n" +
+        "authors and should not be interpreted as representing official" +
+        "policies, either expressed\n" +
+        "or implied, of Emily Stark, Mike Hamburg and Dan Boneh.";
+    
+    
+    private static readonly string GunlachLicence = "\t And distributed under the following license ('MIT''):\n" +
+                    "\n"+
+                    "\t Permission is hereby granted, free of"+
+                    "charge, to any person\n"+
+                    "\t obtaining a copy of this software and"+
+                    "associated documentation\n"+
+                    "\t files (the 'Software'), to deal in the"+
+                    "Software without\n"+
+                    "\t restriction, including without"+
+                    "limitation the rights to use,\n"+
+                    "\t copy, modify, merge, publish,"+
+                    "distribute, sublicense, and/or sell\n"+
+                    "\t copies of the Software, and to permit"+
+                    "persons to whom the\n"+
+                    "\t Software is furnished to do so, subject"+
+                    "to the following\n"+
+                    "\t conditions:\n"+
+                    "\n"+
+                    "\t The above copyright notice and this"+
+                    "permission notice shall be\n"+
+                    "\t included in all copies or substantial"+
+                    "portions of the Software.\n"+
+                    "\n"+
+                    "\t THE SOFTWARE IS PROVIDED 'AS IS',"+
+                    "WITHOUT WARRANTY OF ANY KIND,\n"+
+                    "\t EXPRESS OR IMPLIED, INCLUDING BUT NOT"+
+                    "LIMITED TO THE WARRANTIES\n"+
+                    "\t OF MERCHANTABILITY, FITNESS FOR A"+
+                    "PARTICULAR PURPOSE AND\n"+
+                    "\t NONINFRINGEMENT. IN NO EVENT SHALL THE"+
+                    "AUTHORS OR COPYRIGHT\n"+
+                    "\t HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES"+
+                    "OR OTHER LIABILITY,\n"+
+                    "\t WHETHER IN AN ACTION OF CONTRACT, TORT"+
+                    "OR OTHERWISE, ARISING\n"+
+                    "\t FROM, OUT OF OR IN CONNECTION WITH THE"+
+                    "SOFTWARE OR THE USE OR\n"+
+                    "\t OTHER DEALINGS IN THE SOFTWARE.";
+
+    private static readonly string JosephLicence =
+        "\t The contents of this file are subject to" +
+        "the Mozilla Public License Version \n" +
+        "\t 1.1 (the 'License'); you may not use" +
+        "this file except in compliance with \n" +
+        "\t the License. You may obtain a copy of" +
+        "the License at \n" +
+        "\t http://www.mozilla.org/MPL/\n" +
+        "\n" +
+        "\t Software distributed under the License" +
+        "is distributed on an 'AS IS' basis,\n" +
+        "\t WITHOUT WARRANTY OF ANY KIND, either" +
+        "express or implied. See the License\n" +
+        "\t for the specific language governing" +
+        "rights and limitations under the\n" +
+        "\t License.";
+    
+    private static readonly string JqueryLicence = "Permission is hereby granted, free of charge, to any person obtaining\n"+
+                                                   "a copy of this software and associated documentation files (the\n"+
+                                                   "'Software'), to deal in the Software without restriction, including\n"+
+                                                   "without limitation the rights to use, copy, modify, merge, publish,\n"+
+                                                   "distribute, sublicense, and/or sell copies of the Software, and to\n"+
+                                                   "permit persons to whom the Software is furnished to do so, subject to\n"+
+                                                   "the following conditions:\n"+
+                                                   "\n"+
+                                                   "The above copyright notice and this permission notice shall be\n"+
+                                                   "included in all copies or substantial portions of the Software.\n"+
+                                                   "\n"+
+                                                   "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\n"+
+                                                       "EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n"+
+                                                       "MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n"+
+                                                       "NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n"+
+                                                       "LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n"+
+                                                       "OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n"+
+                                                       "WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+    
+    private static readonly string CryptoJsLicence =  "Redistribution and use in source and binary forms, with or without"+
+                        "modification, are permitted provided that the following conditions are"+
+                        "met:\r"+
+                        "\r"+
+                        "Redistributions of source code must retain the above copyright notice,"+
+                        "this list of conditions and the following disclaimer.\r"+
+                        "Redistributions in binary form must reproduce the above copyright"+
+                        "notice, this list of conditions and the following disclaimer in the"+
+                        "documentation and/or other materials provided with the distribution.\r"+
+                        "Neither the name Crypto-JS nor the names of its contributors may be"+
+                        "used to endorse or promote products derived from this software without"+
+                        "specific prior written permission.\r"+
+                        "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS"+
+                        "IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED"+
+                        "TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A"+
+                        "PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT"+
+                        "HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,"+
+                        "SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT"+
+                        "LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,"+
+                        "DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY"+
+                        "THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT"+
+                        "(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE"+
+                        "OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.";
+
+    private static readonly string Contributors = "\tThe contents" +
+                                                  "of this file are subject to the Mozilla Public License Version \n" +
+                                                  "\t1.1 (the 'License'); you may not use this file except in" +
+                                                  "compliance with \n" +
+                                                  "\tthe License. You may obtain a copy of the License at \n" +
+                                                  "\thttp:www.mozilla.org/MPL/ \n" +
+                                                  "\tSoftware distributed under the License is distributed on an" +
+                                                  "'AS IS' basis,\n" +
+                                                  "\tWITHOUT WARRANTY OF ANY KIND, either express or implied. See" +
+                                                  "the License\n" +
+                                                  "\tfor the specific language governing rights and limitations" +
+                                                  "under the\n" +
+                                                  "\tLicense.\n" +
+                                                  "\t \n" +
+                                                  "\tThe Original Code is the Public Suffix List.\n" +
+                                                  "\t \n" +
+                                                  "\tThe Initial Developer of the Original Code is\n" +
+                                                  "\tJo Hermans <jo.hermans@gmail.com>.\n" +
+                                                  "\tPortions created by the Initial Developer are Copyright (C)" +
+                                                  "2007\n" +
+                                                  "\tthe Initial Developer. All Rights Reserved.\n" +
+                                                  "\t \n" +
+                                                  "\tContributor(s):\n" +
+                                                  "\t \t Ruben Arakelyan" +
+                                                  "<ruben@wackomenace.co.uk>\n" +
+                                                  "\t \t Gervase Markham <gerv@gerv.net>\n" +
+                                                  "\t \t Pamela Greene <pamg.bugs@gmail.com>\n" +
+                                                  "\t \t David Triendl <david@triendl.name>\n" +
+                                                  "\t \t The kind representatives of many TLD registries";
+    
+    
+    private static readonly string LevithanLicence = "And distributed under the following license ('MIT'):\n"+
+                                                     "\t Permission is hereby granted, free of"+
+                                                     "charge, to any person\n"+
+                                                     "\t obtaining a copy of this software and"+
+                                                     "associated documentation\n"+
+                                                     "\t files (the 'Software'), to deal in the"+
+                                                     "Software without\n"+
+                                                     "\t restriction, including without"+
+                                                     "limitation the rights to use,\n"+
+                                                     "\t copy, modify, merge, publish,"+
+                                                     "distribute, sublicense, and/or sell\n"+
+                                                     "\t copies of the Software, and to permit"+
+                                                     "persons to whom the\n"+
+                                                     "\t Software is furnished to do so, subject"+
+                                                     "to the following\n"+
+                                                     "\t conditions:\n"+
+                                                     "\n"+
+                                                     "\t The above copyright notice and this"+
+                                                     "permission notice shall be\n"+
+                                                     "\t included in all copies or substantial"+
+                                                     "portions of the Software.\n"+
+                                                     "\n"+
+                                                     "\t THE SOFTWARE IS PROVIDED 'AS IS',"+
+                                                     "WITHOUT WARRANTY OF ANY KIND,\n"+
+                                                     "\t EXPRESS OR IMPLIED, INCLUDING BUT NOT"+
+                                                     "LIMITED TO THE WARRANTIES\n"+
+                                                     "\t OF MERCHANTABILITY, FITNESS FOR A"+
+                                                     "PARTICULAR PURPOSE AND\n"+
+                                                     "\t NONINFRINGEMENT. IN NO EVENT SHALL THE"+
+                                                     "AUTHORS OR COPYRIGHT\n"+
+                                                     "\t HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES"+
+                                                     "OR OTHER LIABILITY,\n"+
+                                                     "\t WHETHER IN AN ACTION OF CONTRACT, TORT"+
+                                                     "OR OTHERWISE, ARISING\n"+
+                                                     "\t FROM, OUT OF OR IN CONNECTION WITH THE"+
+                                                     "SOFTWARE OR THE USE OR\n"+
+                                                     "\t OTHER DEALINGS IN THE SOFTWARE.";
+    
+}

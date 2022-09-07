@@ -1,0 +1,22 @@
+  @*//TODO  Translate javascript to Blazor event listener
+    $(function () {
+        $("#extFatalError").click(function () {
+            chrome.extension.getBackgroundPage().clearSettings();
+            chrome.extension.getBackgroundPage().showOptionsPage();
+        });
+    });*@
+    <MudButton OnClick="() => { }"></MudButton>
+    <button id="extFatalError" name="actionButton" class="actionButton">
+            <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered corrupted
+            settings data in
+            Google Chrome / Exceeded extension storage quota in Google Chrome.<br /><br />Click here to clear<br />the
+            Total Script Blocker
+            settings lists<br />to try to solve the problem.<br /><br />Otherwise, please ensure Google Chrome has
+            javascript and
+            HTML5 storage enabled.<br /><br />Contact the author of Total Script Blocker if you repeatedly get this
+            message.
+        </button>
+
+@code {
+    
+}

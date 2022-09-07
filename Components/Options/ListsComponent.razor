@@ -1,0 +1,58 @@
+<div id="tabs-Lists">
+
+            <h3>Whitelist</h3>
+
+            <p>Whitelisted sites are allowed to load scripts/iframes/plugins from source locations when they are
+                referenced on a
+                web page.</p>
+
+            <p>
+                You can change what is in the lists here or through the extension's page action button. Some top web
+                sites are
+                preloaded.
+                For example, to whitelist http://www.google.com, you enter</p>
+            <b>&nbsp;google.com </b><br />
+
+            <p>which also whitelists google.com, maps.google.com, books.google.com, etc...</p>
+            <br />
+            <table width="600" border="0">
+                <tr>
+                    <td width="295">
+                        <h4>Whitelist</h4>
+                    </td>
+                    <td width="295">
+                        <h4>Temp Whitelist (Does not update live)</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="whitelist" id="whitelist" cols="40" rows="12"
+                            style="padding: 10px 10px 10px 10px"></textarea>
+                    </td>
+                    <td>
+                        <textarea name="tempAllowList" id="tempAllowList" cols="40" rows="12"
+                            style="padding: 10px 10px 10px 10px"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @*//TODO  Translate javascript to Blazor event listener
+                            $(function () {
+                                 $("#button_ListSave").click(function () {
+                                 save();
+                                 saveButtonAnimate(this.id);
+                                 });
+                            });
+                             *@
+                        <button name="button_ListSave" id="button_ListSave">Save List Changes</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="43" colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+@code {
+    
+}

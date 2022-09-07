@@ -32,8 +32,7 @@
         try
         {
     // this opens index.html in the extension as a new tab when the background page is loaded
-            var extensionUrl = await WebExtensions.Runtime.GetURL("options.html");
-           // await ShowOptionsPage();
+            await ShowOptionsPage();
         }
         catch (Exception e)
         {
@@ -64,7 +63,7 @@
                 for (var j = window.Tabs.ToArray().Length - 1; j >= 0; j--)
                 {
                     var currentWindow = tabsArray[j];
-                    if (!currentWindow.Url.Equals(optionsPageUrl)) continue;
+                    if (currentWindow.Url != optionsPageUrl) continue;
                     var id = currentWindow.Id;
                     if (id is not null) await WebExtensions.Tabs.Remove(id.Value);
                 }

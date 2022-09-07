@@ -1,4 +1,10 @@
 ﻿@page "/options.html"
+@using Blazored.SessionStorage
+@using Lkhsoft.Utility
+@using Total_Script_Blocker_II.Components.Options
+@inject ISessionStorageService _sessionStorageService
+@inject IJsonSerializer _jsonSerializer
+
 @inherits Blazor.BrowserExtension.Pages.IndexPage
 
 <head>
@@ -16,32 +22,24 @@
 </head>
 
 <body bgcolor="ffffff">
-    <div style="position: relative; width: auto; height: auto;left: 0px; top: 0px; padding: 5px; overflow:hidden;"
-        class="ui-widget ui-widget-content ui-corner-all">
-        <div style="display:inline">
-
-            <table>
-                <tr>
-                    <td> <img src="img/icon48.png" width="48" height="48" style="padding: 10px 0px 0px 10px"></td>
-                    <td><label id="labelHeaderTitle" style="font-size:36px; font-weight: bold; padding: 0px 0px 0px 20px">Total
-                        Script Blocker</label></td>
-                    
-                </tr>
-            </table>
-
-                
-        </div>
-        <br /><br />
-
-        <div style="display:inline">
-            <label id="labelHeaderVersion" style="padding: 0px 0px 0px 20px"></label>
-
-
-           
-                
-
-        </div>
+<div style="position: relative; width: auto; height: auto;left: 0px; top: 0px; padding: 5px; overflow:hidden;"
+     class="ui-widget ui-widget-content ui-corner-all">
+    <div style="display:inline">
+        <table>
+            <tr>
+                <td> <img src="img/icon48.png" width="48" height="48" style="padding: 10px 0px 0px 10px"></td>
+                <td><label id="labelHeaderTitle" style="font-size:36px; font-weight: bold; padding: 0px 0px 0px 20px">Total
+                    Script Blocker</label></td>
+            </tr>
+        </table>
     </div>
+    <br /><br />
+
+    <div style="display:inline">
+        <label id="labelHeaderVersion" style="padding: 0px 0px 0px 20px"></label>
+    </div>
+</div>
+
     <div id="tabs" style="height: auto;">
         <ul>
             <li><a href="#tabs-Lists">Settings</a></li>
@@ -49,7 +47,15 @@
             <li><a href="#tabs-About">About</a></li>
         </ul>
 
-        <button id="extFatalError" name="actionButton" class="actionButton">
+    @*//TODO  Translate javascript to Blazor event listener
+    $(function () {
+        $("#extFatalError").click(function () {
+            chrome.extension.getBackgroundPage().clearSettings();
+            chrome.extension.getBackgroundPage().showOptionsPage();
+        });
+    });*@
+    <MudButton OnClick="() => { }"></MudButton>
+    <button id="extFatalError" name="actionButton" class="actionButton">
             <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered corrupted
             settings data in
             Google Chrome / Exceeded extension storage quota in Google Chrome.<br /><br />Click here to clear<br />the
@@ -60,7 +66,14 @@
             message.
         </button>
 
-        <button id="reloadExt" name="actionButton" class="actionButton">
+      @*//TODO  Translate javascript to Blazor event listener
+         $(function () {
+        $("#reloadExt").click(function () {
+            chrome.extension.getBackgroundPage().reloadExt();
+            window.close();
+        });
+    });*@
+    <button id="reloadExt" name="actionButton" class="actionButton">
             <span style="font-size:36px; color:red;">( ! )</span><br /><br />Click to reload Total Script Blocker after
             you copy back your
             password file.
@@ -122,127 +135,9 @@
                 password.<br>
             </div>
             <br>
-
-
-            <h3>Instructions to set Password</h3>
-
-            <div>Setting your Total Script Blocker
-                password is simple once you've done it for the first time. Simply
-                follow these steps:
-            </div>
-            <h4 style="margin-left: 40px;">Step 1:&nbsp;Navigate
-                to the Total Script Blocker Folder</h4>
-
-            <div style="margin-left: 80px;">Open the Total Script Blocker Google
-                Chrome extension folder. The location of this folder is shown below. You can go there by directly
-                copying and
-                pasting the appropriate address below into the location bar of a folder:<br>
-                <ul>
-                    <li><span style="font-style: italic;">Windows XP:</span>
-                        &nbsp; %userprofile%\Local
-                        Settings\Application Data\Google\Chrome\User Data\Default\Extensions\<span
-                            name="extensionId"></span></li>
-                </ul>
-                <ul>
-                    <li><span style="font-style: italic;">Windows
-                            Vista or 7:</span> &nbsp; %userprofile%\AppData\Local\Google\Chrome\User
-                        Data\Default\Extensions\<span name="extensionId"></span></li>
-                </ul>
-                <ul>
-                    <li><span style="font-style: italic;">Mac OS X:</span>
-                        &nbsp; ~/Library/Application
-                        Support/Google/Chrome/Default/Extensions/<span name="extensionId"></span></li>
-                </ul>
-                <ul>
-                    <li><span style="font-style: italic;">Linux:</span>
-                        &nbsp;
-                        ~/.config/google-chrome/Default/Extensions/<span name="extensionId"></span></li>
-                </ul>
-
-                Note: For Windows users, change <span
-                    style="font-weight: bold; font-style: italic;">YOUR_USER_NAME</span>
-                to the user name to
-                you are logged onto under Windows. If you're using Windows Explorer to
-                navigate to the folder, you might need to set <span style="font-weight: bold; font-style: italic;">Show
-                    hidden
-                    files and
-                    folders</span> in <span style="font-weight: bold; font-style: italic;">Tools
-                    &gt; Folder Options... &gt; View</span>.<br>
-                <br>
-                For convenience, it is recommended that you make a shortcut to this
-                folder on your desktop or somewhere handy so that you can quickly reset
-                the Total Script Blocker password after an update.<br>
-            </div>
-            <div><br>
-            </div>
-            <h4 style="margin-left: 40px;">Step 2: Open the Total Script Blocker
-                Password File</h4>
-
-            <div style="margin-left: 80px;">Open the file&nbsp;<span
-                    style="font-weight: bold; font-style: italic;">CHANGE__PASSWORD__HERE.js</span>
-                for editing. For Windows users, do this by right-clicking on the file
-                and selecting&nbsp;<span style="font-weight: bold; font-style: italic;">Edit</span>
-                from the right-click menu. This will open up the file in NotePad for
-                you to enter your Total Script Blocker password. <br>
-            </div>
-            <div><br>
-            </div>
-            <h4 style="margin-left: 40px;">Step 3: Set the Total Script Blocker
-                Password</h4>
-
-            <div style="margin-left: 80px;">Choose a password for
-                Total Script Blocker with the following restrictions:<br>
-                <br>
-
-                <div><span style="font-weight: bold;">Length:</span> 20 minimum,
-                    100 maximum<br>
-                    <span style="font-weight: bold;">Allowed Characters:</span>
-                    abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_1234567890<br>
-                    <span style="font-weight: bold;">Spaces:</span>
-                    Allowed<br>
-                </div>
-                &nbsp;<br>
-                Put the password in between the quotes of the line that reads:<br>
-                <br>
-
-                <div>
-                    <span style="font-weight: bold; font-style: italic;">const
-                        ENCRYPTION_PASSWORD = "";</span>
-                </div>
-                <br>
-                Example: <span style="font-style: italic;">FNqzJmJBA1GQFhuXBmEq20MqEqbn55w3MtT</span><br>
-                It should look like this after (except with your own password):<br>
-
-                <div>
-                    <br style="font-weight: bold; font-style: italic;">
-                    <span style="font-weight: bold; font-style: italic;">const
-                        ENCRYPTION_PASSWORD = "FNqzJmJBA1GQFhuXBmEq20MqEqbn55w3MtT";</span>
-                </div>
-                <br>
-                Save the file and close it when finished.<br>
-            </div>
-            <div><br>
-            </div>
-            <h4 style="margin-left: 40px;">Step 4: Restart Google
-                Chrome</h4>
-
-            <div style="margin-left: 80px;">Close and restart Google
-                Chrome for the new password to take effect in Total Script Blocker. You are done!<br>
-            </div>
-            <br>
-            <br>
-
-            <h3>Backing Up Your Password File for Future Use</h3>
-
-            <div>When Total Script Blocker updates or
-                you try to use Total Script Blocker on a different computer for the first
-                time&nbsp;with Google Chrome Sync, you will be required to provide
-                the password. It is highly recommended that you store a backup copy of
-                your password or password file somewhere handy for these purposes.<br>
-            </div>
-            <br>
-            <br>
-
+            
+            <SetPasswordInfoComponent/>
+            
             <h3>Clear Your Browser HTML5 Storage if You Change to Another Password</h3>
 
             <div>If you change to a different password, it is important that you clear your
@@ -292,6 +187,14 @@
                 </tr>
                 <tr>
                     <td colspan="2">
+                        @*//TODO  Translate javascript to Blazor event listener
+                            $(function () {
+                                 $("#button_ListSave").click(function () {
+                                 save();
+                                 saveButtonAnimate(this.id);
+                                 });
+                            });
+                             *@
                         <button name="button_ListSave" id="button_ListSave">Save List Changes</button>
                     </td>
                 </tr>
@@ -349,15 +252,11 @@
                 / <span name="maxStorageSize"></span> bytes (<span name="listSizeEncryptedPct"></span> %)</p>
 
             <p>Est. Max. Entries: <span name="estMaxListEntries"></span></p>
-<br>
             <h3>User Agent</h3>
             <span name="userAgent"></span>
-<br>
 <h2>licenses</h2>
             <p>Total Script Blocker is open source and is released under the GNU General Public
-                License V3. This license and the license for code portions used from other projects are shown below:<br>
-                <br>
-
+                License V3. This license and the license for code portions used from other projects are shown below:
             </p>
             <ul>
                 <li><big><span style="font-weight: bold;">Total Script Blocker</span></big><br>
@@ -678,4 +577,18 @@
         </div>
     </div>
 </body>
+
+
+@code{
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+           
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+}
 

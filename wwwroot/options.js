@@ -1,5 +1,7 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 
+    //TODO Translate into C# code into Option.razor
     $(function () {
         $("#extFatalError").click(function () {
             chrome.extension.getBackgroundPage().clearSettings();
@@ -7,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    //TODO Translate into C# code into Option.razor
     $(function () {
         $("#reloadExt").click(function () {
             chrome.extension.getBackgroundPage().reloadExt();
@@ -14,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    //TODO Translate into C# code into Option.razor
     $(function () {
         $("#button_ListSave").click(function () {
             save();
@@ -21,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    //TODO Translate into C# code into Option.razor
     $(function () {
         $("#button_ChoicesSave").click(function () {
             save();
@@ -29,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+//TODO Translate into C# code into Option.razor
 const bgPage = chrome.extension.getBackgroundPage();
 
 function saveButtonAnimate(buttonId) {

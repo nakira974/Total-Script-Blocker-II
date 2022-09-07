@@ -7,7 +7,6 @@ using Lkhsoft.Utility;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
-using ScriptBlock.Kernel;
 using Total_Script_Blocker_II.Models;
 
 // ReSharper disable TemplateIsNotCompileTimeConstantProblem
@@ -29,7 +28,7 @@ public class Blocker : IBlocker
         _jsRuntime      = jsRuntime;
         _moduleTask = new Lazy<Task<IJSObjectReference>>(() => _jsRuntime.InvokeAsync<IJSObjectReference>(
                                                                            "import",
-                                                                           "common.js")
+                                                                           "common/common.js")
                                                                          .AsTask());
     }
 
@@ -48,8 +47,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             return false;
         }
-
-        throw new NotImplementedException();
     }
 
     /// <inheritdoc />
@@ -67,8 +64,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
-        throw new NotImplementedException();
     }
 
     /// <inheritdoc />
@@ -102,8 +97,6 @@ public class Blocker : IBlocker
             if (!string.IsNullOrEmpty(logMessage)) _logger.LogError(logMessage);
             throw;
         }
-
-        throw new NotImplementedException();
     }
 
     /// <inheritdoc />

@@ -13,12 +13,14 @@
 @inject IJSRuntime _jsRuntime
 @inject ILogger<Background> _logger
 
+@page "/background.html"
+
 @code{
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
         {
-            
+            await _jsRuntime.InvokeVoidAsync("launchMessageListener", await GenerateAllSettings());
         }
         catch (Exception e)
         {
@@ -91,7 +93,7 @@
     {
         try
         {
-            var tempAllowListHash = _sessionStorageService.GetItemAsStringAsync("tempAllowListHash");
+            var tempAllowListHash = await _sessionStorageService.GetItemAsStringAsync("tempAllowListHash");
             var setting = new Settings(); 
     //TODO Create settings here
             return await _jsonSerializer.SerializeAsync(setting);

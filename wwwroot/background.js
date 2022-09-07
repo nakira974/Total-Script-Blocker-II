@@ -54,25 +54,27 @@ function generateAllSettings() {
  Listens for messages from our content scripts to provide settings information.
  */
 
+function launchMessageListener(settings){
+    chrome.extension.onMessage.addListener(function (msg, src, send) {
+        if (msg.type === "get settings block start") {
+            //console.log("get settings block start msg: " + msg.url);
+            //console.log("get settings block start src: " + src);
+            // If src is null, we are very likely blocking something inside of another Google Chrome extension.
+            // However, we don't have a good way of showing the whitelister.
+            var theSettings = settings;	//msg.url, ((src && src.tab) ? src.tab.url : "")
+            send(theSettings);
+        }
+        else if (msg.type === "get block harmful search") {
+            send({"setting": config.get('hideHarmfulSearches')});
+        }
+        else if (msg.type === "test") {
+            send({"result": true});
+        }
+        else {
+            send({});
+        }
+    });
+}
 
-chrome.extension.onMessage.addListener(function (msg, src, send) {
-    if (msg.type === "get settings block start") {
-        //console.log("get settings block start msg: " + msg.url);
-        //console.log("get settings block start src: " + src);
-        // If src is null, we are very likely blocking something inside of another Google Chrome extension.
-        // However, we don't have a good way of showing the whitelister.
-        var theSettings = generateAllSettings();	//msg.url, ((src && src.tab) ? src.tab.url : "")
-        send(theSettings);
-    }
-    else if (msg.type === "get block harmful search") {
-        send({"setting": config.get('hideHarmfulSearches')});
-    }
-    else if (msg.type === "test") {
-        send({"result": true});
-    }
-    else {
-        send({});
-    }
-});
 
 

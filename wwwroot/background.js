@@ -50,6 +50,11 @@ function generateAllSettings() {
         "reload": config.get('reloadCurrentTabOnToggle')};
 }
 
+export function reloadExtension(){
+    chrome.extension.getBackgroundPage().reloadExt();
+    window.close();
+}
+
 /*
  Listens for messages from our content scripts to provide settings information.
  */

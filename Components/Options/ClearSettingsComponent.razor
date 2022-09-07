@@ -1,11 +1,12 @@
-  @*//TODO  Translate javascript to Blazor event listener
-    $(function () {
-        $("#extFatalError").click(function () {
-            chrome.extension.getBackgroundPage().clearSettings();
-            chrome.extension.getBackgroundPage().showOptionsPage();
-        });
-    });*@
-    <MudButton OnClick="() => { }"></MudButton>
+@using WebExtensions.Net
+@using Blazored.LocalStorage
+@using Blazored.LocalStorage
+@using System.Threading
+@using Microsoft.Extensions.Logging
+@inject ILocalStorageService _localStorageService
+@inject ILogger<ClearSettingsComponent> _logger
+
+<MudButton OnClick="async () => await ClearItems()"></MudButton>
     <button id="extFatalError" name="actionButton" class="actionButton">
             <span style="font-size:36px; color:red;">( ! )</span><br /><br />Total Script Blocker encountered corrupted
             settings data in
@@ -18,5 +19,30 @@
         </button>
 
 @code {
-    
+    [Parameter]
+    public IWebExtensionsApi ExtensionsApi { get; set; }
+
+    private IEnumerable<string> _settingsToRemove = new string[]
+                                                    {
+                                                        "whitelistHash",
+                                                        "tempAllowListHash",
+                                                        "blacklistHash"
+                                                    };
+
+    private async Task ClearItems()
+    {
+        try
+        {
+            await _localStorageService.RemoveItemsAsync(_settingsToRemove);
+#pragma warning disable CS0618
+           await ExtensionsApi.Extension.GetURL("options.html");
+#pragma warning restore CS0618
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "ClearSettingsComponent ClearItems() error");
+            throw;
+        }
+    }
+
 }

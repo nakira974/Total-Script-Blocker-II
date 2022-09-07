@@ -1,17 +1,31 @@
+@using WebExtensions.Net
+@using Microsoft.Extensions.Logging
+@inject ILogger<ReloadExtensionComponent> _logger
+@inject IJSRuntime _jsRuntime
 
-      @*//TODO  Translate javascript to Blazor event listener
-         $(function () {
-        $("#reloadExt").click(function () {
-            chrome.extension.getBackgroundPage().reloadExt();
-            window.close();
-        });
-    });*@
-    <button id="reloadExt" name="actionButton" class="actionButton">
-            <span style="font-size:36px; color:red;">( ! )</span><br /><br />Click to reload Total Script Blocker after
-            you copy back your
-            password file.
+<MudButton OnClick="async () => await ReloadExtension()" Color="Color.Warning">
+    ( ! )<b/> 
+    /><br/>
+    Click to reload Total Script Blocker after you copy back your password file.
+</MudButton>
+<button id="reloadExt" name="actionButton" class="actionButton">
+            
         </button>
 
 @code {
-    
+    [Parameter]
+    public IWebExtensionsApi ExtensionsApi { get; set; }
+
+    private async Task ReloadExtension()
+    {
+        try
+        {
+            await _jsRuntime.InvokeVoidAsync("reloadExtension");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "ReloadExtensionComponent ReloadExtension() error");
+            throw;
+        }
+    }
 }

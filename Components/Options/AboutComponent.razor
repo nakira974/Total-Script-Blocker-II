@@ -7,60 +7,89 @@
         <p>Total Script Blocker is open source and is released under the GNU General Public
             License V3. This license and the license for code portions used from other projects are shown below:
         </p>
-        <MudList Clickable="false">
-            <MudListSubheader>
-                <MudChip Color="Color.Secondary">
-                    Total Script Blocker II
-                </MudChip>
-            </MudListSubheader>
-            <MudListItem Text="Program Usage Conditions">
+        <MudSimpleTable Style="overflow-x: auto;">
+            <thead>
+            <tr>Title</tr>
+            <tr>Copryright</tr>
+            </thead>
+            <tbody>
+            <tr>
+                Program Usage Conditions
+            </tr>
+            
+            <tr>
                 @ProgramUsageCondition
                 <a href="http://www.gnu.org/licenses/"> GNU LICENCES CONDITIONS</a>
-            </MudListItem>
-
-            <MudListItem Text="Stanford Javascript Crypto Library">
+            </tr>
+            
+            <tr>
+                Stanford Javascript Crypto Library
+            </tr>
+            
+            <tr>
                 &nbsp; Copyright &copy; 2010 Emily Stark, Mike Hamburg and Dan Boneh.
                 All rights reserved. (
-                <a style="font-weight: bold;"href="http://crypto.stanford.edu/sjcl/">
+                <a style="font-weight: bold;"
+                   href="http://crypto.stanford.edu/sjcl/">
                     http://crypto.stanford.edu/sjcl/
                 </a>)<br/>
                 @StandfordJavascriptLicence
-            </MudListItem>
-
-            <MudListItem Text="Michael Gundlach">
+            </tr>
+            
+            <tr>
+                Michael Gundlach
+            </tr>
+            
+            <tr>
                 &nbsp; Copyright &copy; 2010 Michael Gundlach (
                 <a style="font-weight: bold;"
                    href="http://code.google.com/p/adblockforchrome/">
                     http://code.google.com/p/adblockforchrome/
                 </a>)<br/>
                 @GunlachLicence
-            </MudListItem>
-
-            <MudListItem Text="Tom Joseph">
+            </tr>
+            
+            <tr>
+                Tom Joseph
+            </tr>
+            
+            <tr>
                 &nbsp; Copyright &copy; 2010 Tom Joseph (
                 <a href="http://code.google.com/p/adthwart/"
                    style="font-weight: bold;">http://code.google.com/p/adthwart/</a>
                 )<br/>
                 &nbsp; <br/>
                 @JosephLicence
-            </MudListItem>
-
-            <MudListItem Text="JQuery">
+            </tr>
+            
+            <tr>
+                Jquery
+            </tr>
+            
+            <tr>
                 &nbsp; Copyright &copy; 2010 John Resig,
                 <a style="font-weight: bold;"
                    href="http://jquery.com/">http://jquery.com/</a><br/>
                 @JqueryLicence
-            </MudListItem>
+            </tr>
             
-            <MudListItem Text="Steven Levithan">
+            <tr>
+                Steven Levithan
+            </tr>
+            
+            <tr>
                 &nbsp; &copy; Steven Levithan (
                 <a style="font-weight: bold;"
                    href="http://stevenlevithan.com">stevenlevithan.com</a>)<br/>
                 <br/>
                 @LevithanLicence
-            </MudListItem>
+            </tr>
             
-            <MudListItem Text="Intermapper IPv6 Parser">
+            <tr>
+                Intermapper IPv6 Parser
+            </tr>
+            
+            <tr>
                 &nbsp; &copy; Intermapper (
                 <a style="font-weight: bold;"
                    href="http://www.intermapper.com">http://www.intermapper.com</a>)
@@ -68,29 +97,39 @@
                 <br/>
                 Free use with link back to site.<br>
                 <br/>
-            </MudListItem>
+            </tr>
             
-            <MudListItem Text="Public Suffix List">
+            <tr>
+                Public Suffix List
+            </tr>
+            
+            <tr>
                 (<a href="http://publicsuffix.org/" style="font-weight: bold;">http://publicsuffix.org/</a>,
                 For recognizing common top level domains)<br/>
                 <br/>
                 @Contributors
-            </MudListItem>
+            </tr>
             
-            <MudListItem Text="Crypto-JS">
+            <tr>
+                Crypto-JS
+            </tr>
+            
+            <tr>
                 (<a href="http://code.google.com/p/crypto-js/"
                     style="font-weight: bold;">http://code.google.com/p/crypto-js/</a>,
                 For MD5 hashing)<br/>
                 <br/>
-                
+                                
                 <div>Copyright &copy; 2009,
                     Jeff Mott. All rights reserved.<br/>
                     <br/>
                     @CryptoJsLicence
                 </div>
-            </MudListItem>
-        </MudList>
-        </div>
+            </tr>
+            
+            </tbody>
+        </MudSimpleTable>
+</div>
 
 @code {
     private static readonly string ProgramUsageCondition = "This program is free software: you can" +

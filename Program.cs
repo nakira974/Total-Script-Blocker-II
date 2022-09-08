@@ -2,11 +2,12 @@
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Blazored.SessionStorage;
+using Blazored.LocalStorage;
 using Lkhsoft.Utility;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using MudBlazor.Services;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -42,7 +43,8 @@ namespace Total_Script_Blocker_II
             
             builder.Services.AddScoped<IJsonSerializer, JsonSerializer>();
             builder.Services.AddScoped<IBlocker, Blocker>();
-            builder.Services.AddBlazoredSessionStorage();
+            builder.Services.AddMudServices();
+            builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddBrowserExtensionServices();
             await builder.Build().RunAsync();
         }

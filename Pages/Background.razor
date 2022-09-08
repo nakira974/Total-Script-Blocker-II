@@ -1,12 +1,11 @@
 ﻿@page "/background.html"
 @using WebExtensions.Net.Tabs
 @using WebExtensions.Net.Windows
-@using Blazored.SessionStorage
 @using Lkhsoft.Utility
 @using Microsoft.Extensions.Logging
 @using Total_Script_Blocker_II.Models
 
-@inject ISessionStorageService _sessionStorageService
+@inject ILocalStorageService _LocalStorageService
 @inject IJsonSerializer _jsonSerializer
 @inject ILogger<Background> _logger
 @inherits Blazor.BrowserExtension.Pages.BackgroundPage
@@ -85,7 +84,7 @@
     {
         try
         {
-            var tempAllowListHash = await _sessionStorageService.GetItemAsStringAsync("tempAllowListHash");
+            var tempAllowListHash = await _LocalStorageService.GetItemAsStringAsync("tempAllowListHash");
             var setting = new Settings(); 
     //TODO Create settings here
             return await _jsonSerializer.SerializeAsync(setting);

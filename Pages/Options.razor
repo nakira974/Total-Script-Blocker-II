@@ -3,14 +3,6 @@
 
 @inherits Blazor.BrowserExtension.Pages.IndexPage
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <meta name="keywords" content="XHTML, CSS, template, FullAhead" />
-    <meta name="description" content="Take control of scripting in your browser." />
-    <meta name="robots" content="index, follow, noarchive" />
-    <meta name="googlebot" content="noarchive" />
-    <title>Options | Total Script Blocker II</title>
-</head>
 
 <body bgcolor="ffffff">
 <div style="position: relative; width: auto; height: auto;left: 0px; top: 0px; padding: 5px; overflow:hidden;"
@@ -19,8 +11,7 @@
         <table>
             <tr>
                 <td> <img src="img/icon48.png" width="48" height="48" style="padding: 10px 0px 0px 10px"></td>
-                <td><label id="labelHeaderTitle" style="font-size:36px; font-weight: bold; padding: 0px 0px 0px 20px">Total
-                    Script Blocker</label></td>
+                <td><label id="labelHeaderTitle" style="font-size:36px; font-weight: bold; padding: 0px 0px 0px 20px">Total Script Blocker</label></td>
             </tr>
         </table>
     </div>
@@ -38,9 +29,13 @@
             <li><a href="#tabs-About">About</a></li>
         </ul>
 
-    <ClearSettingsComponent ExtensionsApi="WebExtensions"/>
-    <ReloadExtensionComponent/>
-    <PasswordStatusComponent/>
+        <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined" VerticalAlign="true">
+            <ClearSettingsComponent ExtensionsApi="WebExtensions"/>
+            <ReloadExtensionComponent/>
+            <PasswordStatusComponent/>
+        </MudButtonGroup>
+        
+        
     
     <ListsComponent/>
     

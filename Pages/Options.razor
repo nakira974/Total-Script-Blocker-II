@@ -22,13 +22,17 @@
     </div>
 </div>
 
-<MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined" VerticalAlign="true">
-    <ClearSettingsComponent ExtensionsApi="WebExtensions"/>
-    <ReloadExtensionComponent/>
-</MudButtonGroup>
-<br/>
-<br/>
+
+
 <MudTabs Outlined="true">
+        <br/>
+        <br/>
+    <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined" VerticalAlign="true">
+        <ClearSettingsComponent ExtensionsApi="WebExtensions"/>
+        <ReloadExtensionComponent/>
+    </MudButtonGroup>
+    <br/>
+    <br/>
     <MudTabPanel Text="Settings" Icon="@Icons.Material.Filled.SettingsApplications">
         <ListsComponent/>
     </MudTabPanel>

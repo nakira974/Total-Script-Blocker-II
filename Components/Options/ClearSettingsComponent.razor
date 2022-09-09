@@ -7,9 +7,10 @@
 @inject ILogger<ClearSettingsComponent> _logger
 
 <MudButton OnClick="async () => await ClearItems()"
-           id="externalFatalError"
+           id="extFatalError"
            StartIcon="@Icons.Material.Filled.LocalFireDepartment"
-           Color="Color.Warning">
+           Color="Color.Warning"
+           FullWidth="true">
     Total Script Blocker encountered corrupted
     settings data in Google Chrome / Exceeded extension storage quota in Google Chrome.<br/>
     <br/>

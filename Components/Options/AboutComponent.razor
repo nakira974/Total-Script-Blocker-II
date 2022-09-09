@@ -10,124 +10,150 @@
         <p>Total Script Blocker is open source and is released under the GNU General Public
             License V3. This license and the license for code portions used from other projects are shown below:
         </p>
-        <MudSimpleTable Style="overflow-x: auto;">
-            <thead>
-            <tr>Title</tr>
-            <tr>Copryright</tr>
+        <MudSimpleTable Style="overflow-x: auto;" id="about_table">
+            <thead id="about_table_head">
+            <tr id="about_table_header_raw">
+                <th id="title_header">Title</th>
+                <th id="copyright_header">Copryright</th>
+            </tr>
             </thead>
-            <tbody>
-            <tr>
-                Program Usage Conditions
+            <tbody id="about_table_body">
+            
+            <tr id="program_usage_raw">
+                <td id="program_usage_title">
+                    Program Usage Conditions
+                </td>
+
+                <td id="program_usage_copyright">
+                    @ProgramUsageCondition
+                    <a href="http://www.gnu.org/licenses/"> GNU LICENCES CONDITIONS</a>
+                </td>
+            </tr>
+
+
+            <tr id="standford_javascript_raw">
+                <td id="standford_javascript_title">
+                    Stanford Javascript Crypto Library
+                </td>
+                <td id="standford_javascript_copyright">
+                    &nbsp; Copyright &copy; 2010 Emily Stark, Mike Hamburg and Dan Boneh.
+                    All rights reserved. (
+                    <a style="font-weight: bold;"
+                       href="http://crypto.stanford.edu/sjcl/">
+                        http://crypto.stanford.edu/sjcl/
+                    </a>)<br/>
+                    @StandfordJavascriptLicence
+                </td>
+            </tr>
+
+
+            <tr id="gundlach_raw">
+                <td id="gundlach_title">
+                    Michael Gundlach
+                </td>
+                <td id="gundlach_copyright">
+                    &nbsp; Copyright &copy; 2010 Michael Gundlach (
+                    <a style="font-weight: bold;"
+                       href="http://code.google.com/p/adblockforchrome/">
+                        http://code.google.com/p/adblockforchrome/
+                    </a>)<br/>
+                    @GunlachLicence
+                </td>
+            </tr>
+
+
+            <tr id="joseph_raw">
+                <td id="joseph_title">
+                    Tom Joseph
+                </td>
+                
+                <td id="joseph_copyright">
+                    &nbsp; Copyright &copy; 2010 Tom Joseph (
+                    <a href="http://code.google.com/p/adthwart/"
+                       style="font-weight: bold;">http://code.google.com/p/adthwart/</a>
+                    )<br/>
+                    &nbsp; <br/>
+                    @JosephLicence
+                </td>
             </tr>
             
-            <tr>
-                @ProgramUsageCondition
-                <a href="http://www.gnu.org/licenses/"> GNU LICENCES CONDITIONS</a>
+
+            <tr id="jquery_raw">
+                <td id="jquery_title">
+                    Jquery
+                </td>
+                
+                <td id="jquery_copyright">
+                    &nbsp; Copyright &copy; 2010 John Resig,
+                    <a style="font-weight: bold;"
+                       href="http://jquery.com/">http://jquery.com/</a><br/>
+                    @JqueryLicence
+                </td>
             </tr>
             
-            <tr>
-                Stanford Javascript Crypto Library
-            </tr>
-            
-            <tr>
-                &nbsp; Copyright &copy; 2010 Emily Stark, Mike Hamburg and Dan Boneh.
-                All rights reserved. (
-                <a style="font-weight: bold;"
-                   href="http://crypto.stanford.edu/sjcl/">
-                    http://crypto.stanford.edu/sjcl/
-                </a>)<br/>
-                @StandfordJavascriptLicence
-            </tr>
-            
-            <tr>
-                Michael Gundlach
-            </tr>
-            
-            <tr>
-                &nbsp; Copyright &copy; 2010 Michael Gundlach (
-                <a style="font-weight: bold;"
-                   href="http://code.google.com/p/adblockforchrome/">
-                    http://code.google.com/p/adblockforchrome/
-                </a>)<br/>
-                @GunlachLicence
-            </tr>
-            
-            <tr>
-                Tom Joseph
-            </tr>
-            
-            <tr>
-                &nbsp; Copyright &copy; 2010 Tom Joseph (
-                <a href="http://code.google.com/p/adthwart/"
-                   style="font-weight: bold;">http://code.google.com/p/adthwart/</a>
-                )<br/>
-                &nbsp; <br/>
-                @JosephLicence
-            </tr>
-            
-            <tr>
-                Jquery
-            </tr>
-            
-            <tr>
-                &nbsp; Copyright &copy; 2010 John Resig,
-                <a style="font-weight: bold;"
-                   href="http://jquery.com/">http://jquery.com/</a><br/>
-                @JqueryLicence
-            </tr>
-            
-            <tr>
-                Steven Levithan
-            </tr>
-            
-            <tr>
-                &nbsp; &copy; Steven Levithan (
-                <a style="font-weight: bold;"
-                   href="http://stevenlevithan.com">stevenlevithan.com</a>)<br/>
-                <br/>
-                @LevithanLicence
-            </tr>
-            
-            <tr>
-                Intermapper IPv6 Parser
-            </tr>
-            
-            <tr>
-                &nbsp; &copy; Intermapper (
-                <a style="font-weight: bold;"
-                   href="http://www.intermapper.com">http://www.intermapper.com</a>)
-                <br/>
-                <br/>
-                Free use with link back to site.<br>
-                <br/>
-            </tr>
-            
-            <tr>
-                Public Suffix List
-            </tr>
-            
-            <tr>
-                (<a href="http://publicsuffix.org/" style="font-weight: bold;">http://publicsuffix.org/</a>,
-                For recognizing common top level domains)<br/>
-                <br/>
-                @Contributors
-            </tr>
-            
-            <tr>
-                Crypto-JS
-            </tr>
-            
-            <tr>
-                (<a href="http://code.google.com/p/crypto-js/"
-                    style="font-weight: bold;">http://code.google.com/p/crypto-js/</a>,
-                For MD5 hashing)<br/>
-                <br/>
-                                
-                <div>Copyright &copy; 2009,
-                    Jeff Mott. All rights reserved.<br/>
+            <tr id="levithan_raw">
+                <td id="levithan_title">
+                    Steven Levithan
+                </td>
+                <td id="levithan_copyright">
+                    &nbsp; &copy; Steven Levithan (
+                    <a style="font-weight: bold;"
+                       href="http://stevenlevithan.com">stevenlevithan.com</a>)<br/>
                     <br/>
-                    @CryptoJsLicence
-                </div>
+                    @LevithanLicence
+                </td>
+                
+            </tr>
+            
+
+            <tr id="intermapper_ipv6_raw">
+                <td id="intermapper_ipv6_title">
+                    Intermapper IPv6 Parser
+                </td>
+
+                <td id="intermapper_ipv6_copyright">
+                    &nbsp; &copy; Intermapper (
+                    <a style="font-weight: bold;"
+                       href="http://www.intermapper.com">http://www.intermapper.com</a>)
+                    <br/>
+                    <br/>
+                    Free use with link back to site.<br>
+                    <br/>
+                </td>
+            </tr>
+            
+            <tr id="public_suffix_raw">
+                <td id="public_suffix_title">
+                    Public Suffix List
+                </td>
+
+                <td id="public_suffix_copyright">
+                    (<a href="http://publicsuffix.org/" style="font-weight: bold;">http://publicsuffix.org/</a>,
+                    For recognizing common top level domains)<br/>
+                    <br/>
+                    @Contributors
+                </td>
+            </tr>
+            
+
+            <tr id="crypto_js_raw">
+                <td id="crypto_js_title">
+                    Crypto-JS
+                </td>
+                
+                <td id="crypto_js_copyright">
+                    (
+                    <a href="http://code.google.com/p/crypto-js/"
+                       style="font-weight: bold;">http://code.google.com/p/crypto-js/</a>,
+                    For MD5 hashing)<br/>
+                    <br/>
+                
+                    <div>Copyright &copy; 2009,
+                        Jeff Mott. All rights reserved.<br/>
+                        <br/>
+                        @CryptoJsLicence
+                    </div>
+                </td>
             </tr>
             
             </tbody>

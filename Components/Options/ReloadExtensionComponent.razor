@@ -3,9 +3,9 @@
 @inject ILogger<ReloadExtensionComponent> _logger
 @inject IJSRuntime _jsRuntime
 
-<MudButton OnClick="async () => await ReloadExtension()" id="reloadExt"
+<MudButton OnClick="async () => await ReloadExtension()" id="reloadExtension"
+           StartIcon="@Icons.Material.Filled.ChangeCircle"
            Color="Color.Warning">
-    <span style="font-size:36px; color:red;">( ! )</span><br/>
     Click to reload Total Script Blocker after you copy back your password file.
 </MudButton>
 

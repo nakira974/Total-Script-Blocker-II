@@ -3,10 +3,8 @@
 
 @inherits Blazor.BrowserExtension.Pages.BasePage
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-<link href="content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />  
+ 
 
-<body bgcolor="ffffff">
 <div style="position: relative; width: auto; height: auto;left: 0px; top: 0px; padding: 5px; overflow:hidden;"
      class="ui-widget ui-widget-content ui-corner-all">
     <div style="display:inline">
@@ -24,27 +22,24 @@
     </div>
 </div>
 
-    <div id="tabs" style="height: auto;">
-        <ul>
-            <li><a href="#tabs-Lists">Settings</a></li>
-            <li><a href="#tabs-PasswordStatus">Password Status</a></li>
-            <li><a href="#tabs-About">About</a></li>
-        </ul>
-
-        <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined" VerticalAlign="true">
-            <ClearSettingsComponent ExtensionsApi="WebExtensions"/>
-            <ReloadExtensionComponent/>
-        </MudButtonGroup>
-        
+<MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined" VerticalAlign="true">
+    <ClearSettingsComponent ExtensionsApi="WebExtensions"/>
+    <ReloadExtensionComponent/>
+</MudButtonGroup>
+<br/>
+<br/>
+<MudTabs Outlined="true">
+    <MudTabPanel Text="Settings" Icon="@Icons.Material.Filled.SettingsApplications">
+        <ListsComponent/>
+    </MudTabPanel>
+    <MudTabPanel Text="Password Status" Icon="@Icons.Material.Filled.Password">
         <PasswordStatusComponent/>
+    </MudTabPanel>
+    <MudTabPanel Text="About" Icon="@Icons.Material.Filled._3p">
+        <AboutComponent/>
+    </MudTabPanel>
+</MudTabs>
 
-        
-    
-    <ListsComponent/>
-    
-    <AboutComponent/>
-    </div>
-</body>
 
 
 @code{

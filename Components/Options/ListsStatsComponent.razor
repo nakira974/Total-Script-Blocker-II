@@ -1,17 +1,42 @@
 <h3>List Stats</h3>
 
-            <p>Total # Entries: <span name="numListEntries"></span></p>
+<MudList>
+    <MudListItem Text="Total Entries :">
+        <MudChip Color="Color.Secondary">@_totalEntries</MudChip>
+    </MudListItem>
+    
+    <MudListItem Text="Space Occupied (dual-byte encoding):">
+        <MudChip Color="Color.Secondary"> @_spaceOccupied bytes</MudChip>
+    </MudListItem>
+    
+    <MudListItem Text="Maximum storage size:">
+        <MudChip Color="Color.Secondary">@_maxmiumStorageSize bytes</MudChip>
+    </MudListItem>
+    
+    <MudListItem Text="List usage:">
+        <MudChip Color="Color.Secondary">@_listUsage %</MudChip>
+    </MudListItem>
+    
+    <MudListItem Text="Maximum entries:">
+        <MudChip Color="Color.Secondary">@_maximumEntries</MudChip>
+    </MudListItem>
+    
+    <MudListItem Text="Est. Space Occupied Encrypted (dual-byte encoding):">
+        <MudChip Color="Color.Secondary">@_encryptedStorageSize bytes</MudChip>
+    </MudListItem>
+    
+    <MudListItem Text="User agent:">
+        <MudChip Color="Color.Secondary">@_userAgent</MudChip>
+    </MudListItem>
+</MudList>
 
-            <p>Space Occupied (dual-byte encoding): <span name="listSpace"></span> bytes
-                / <span name="maxStorageSize"></span> bytes (<span name="listSpacePct"></span> %)</p>
-
-            <p>Est. Space Occupied Encrypted (dual-byte encoding): <span name="listSizeEncrypted"></span> bytes
-                / <span name="maxStorageSize"></span> bytes (<span name="listSizeEncryptedPct"></span> %)</p>
-
-            <p>Est. Max. Entries: <span name="estMaxListEntries"></span></p>
-            <h3>User Agent</h3>
-            <span name="userAgent"></span>
 
 @code {
-    
+    private int _totalEntries { get; set; }
+    private int _spaceOccupied { get; set; }
+    private int _maxmiumStorageSize { get; set; }
+    private int _encryptedStorageSize { get; set; }
+    private int _maximumEntries { get; set; }
+    private float _listUsage { get; set; }
+    private string _userAgent { get; set; }
 }
